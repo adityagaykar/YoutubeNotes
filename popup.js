@@ -177,7 +177,7 @@ $(document).ready(function(){
 });
 
 //Search functions
-s
+
 function getBingResults(query){
 	var params = {
             // Request parameters
