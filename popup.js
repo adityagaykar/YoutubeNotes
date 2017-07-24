@@ -143,10 +143,6 @@ $(document).ready(function(){
 		// 	$("#note").text("My ip : "+data.ip);
 		// });
 	});
-	// Update iframe height
-	var iframe = $("#inline-search-result-iframe");
-	var height = window.innerHeight - 220;
-	iframe.attr("style","height:"+height+"px;");
 
 	$("#search_text").on("keypress", showSearchResultsOnEnter);
 	$("#search_button").click(showSearchResults);
