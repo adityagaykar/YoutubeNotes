@@ -151,12 +151,9 @@ $(document).ready(function(){
 		// 	$("#note").text("My ip : "+data.ip);
 		// });
 	});
-	$("#search_button").click(function(){
-		var query = $("#search_text").val();
-		var url = "https://bing.com/search?q="+query.trim();
-		 var win = window.open(url, '_blank');
-  		win.focus();
-	})
+
+	$("#search_text").on("keypress", showSearchResultsOnEnter);
+	$("#search_button").click(showSearchResults);
 	$("#pause").click(function(){
 		pauseVideo();
 	});
@@ -187,6 +184,60 @@ $(document).ready(function(){
 
 });
 
+//Search functions
+
+function getBingResults(query){
+	var params = {
+            // Request parameters
+            "q": query,
+            "count": "10",
+            "offset": "0",
+            "mkt": "en-us",
+            "safesearch": "Moderate",
+		};
+		
+	$.ajax({
+            url: "https://api.cognitive.microsoft.com/bing/v5.0/search?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","4cf440fd158e4c3da2e0d62415669636");
+            },
+            type: "GET",
+            // Request body
+            data: "{body}",
+        })
+        .done(function(data) {
+            if(data){
+				var resultsDiv = $("#inline-search-result");
+				resultsDiv.empty();
+				var relatedSearches = data.webPages.value;
+				var items = [];
+				for(var i=0; i<relatedSearches.length; i++){
+					items.push(`<div class="result-row">
+						<a target='_blank' class='link-title' href='`+relatedSearches[i].url+`'>`+relatedSearches[i].name+`</a>
+						<div class='display-url'> `+relatedSearches[i].displayUrl+`</div>
+						<div class='snippet'>`+relatedSearches[i].snippet+`</div>
+					</div>`);
+				}
+				resultsDiv.append(items);
+			}
+        })
+        .fail(function() {
+            return null;
+        });
+}
+
+function showSearchResultsOnEnter(event){
+	if (event.keyCode == 13) {
+		showSearchResults();
+		return false;
+    }
+}
+
+function showSearchResults() {
+	var query = $("#search_text").val();
+	getBingResults(query); 
+}
 
 //Timeline functions
 
