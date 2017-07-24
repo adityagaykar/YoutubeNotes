@@ -18,6 +18,7 @@
         min-height: 600px;
         min-width: 450px;
       }
+
       #note {
         /* avoid an excessively wide status text */
         white-space: pre;
@@ -25,6 +26,26 @@
         overflow: hidden;
         min-width: 400px;
         min-height: 50px;
+      }
+
+      #inline-search-result{
+        width: 100%;
+        padding: 0px 18px;
+      }
+
+      .link-title {
+        color: #0072c6;
+        font-weight: 700;
+      }
+      .display-url {
+        color: #89c402;
+        font-weight: 500;
+      }
+      .result-row {
+        margin-top: 1px;
+        padding: 5px;
+        background-color: #F3F3F3;
+        border: none;
       }
     </style>
 
@@ -117,6 +138,7 @@
                             </span>
                       </div><!-- /input-group -->
                </div><!-- /.col-lg-6 -->
+               <div id="inline-search-result"/>
               </div>
             </div>
           </div>
