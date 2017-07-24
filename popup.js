@@ -6,6 +6,14 @@ function pauseVideo(){
 	});
 }
 
+function populateTimeline(){
+	chrome.tabs.getSelected(null, function(tab){
+	    chrome.tabs.executeScript(tab.id, {code: "showTimeline()"}, function(response) {
+	        return true;
+	    });
+	});
+}
+
 function playVideo(){
 	chrome.tabs.getSelected(null, function(tab){
 	    chrome.tabs.executeScript(tab.id, {code: "document.getElementsByClassName('html5-main-video')[0].play()"}, function(response) {
@@ -71,7 +79,7 @@ function saveNote(note){
 			// $("#status").removeClass("alert-info").addClass("alert-success").html("Done!");
 			$("#note").val("");
 			showStatus("status", "Done!", ["label", "label-success"], 3000);
-			
+			populateTimeline();
 			location.reload();
 				// $("#element").timeline("add",
 	   //                              [
@@ -199,12 +207,13 @@ function pruneContentForDisplay(content)
 function getNotes()
  {
 
-        	$.post("http://youtubenote.azurewebsites.net//api/Users/GetNotes", 
+        	$.post("https://youtubenote.azurewebsites.net//api/Users/GetNotes", 
 				{
 					"Name" : "adityagaykar",
 					"Url" : YoutubeUrl,
 					},
 				function(response){
+					//alert(response + " " + YoutubeUrl);
 					response.sort(function(a, b){
 						return parseFloat(a.TimeStamp) < parseFloat(b.TimeStamp);
 					});
