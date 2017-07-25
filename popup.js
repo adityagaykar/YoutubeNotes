@@ -162,6 +162,26 @@ $(document).ready(function(){
 		playVideo();
 	});
 
+	$("#shareable_link").click(function(){
+		$.post("https://youtubenote.azurewebsites.net//api/Users/GetShortUrl", 
+				{
+					"Email" : "adityagaykar",
+					"Url" : YoutubeUrl,
+					},
+				function(response){
+					window.alert(response);
+				})
+			});
+	});
+
+	$("duplicate").click(function(){
+		//call to api for inserting into db
+	});
+
+	$("get_shared_video").click(function(){
+		//write getVideo call here --Deeksha
+	});
+
 	$("#remove_note_btn").click(function(){
 		var url = this.getAttribute("url");
 		var ts = this.getAttribute("ts");

@@ -47,6 +47,30 @@
         background-color: #F3F3F3;
         border: none;
       }
+      /*.modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 30px;
+        left: 0;
+        top: 0;
+        width: 50%;
+        height: 50%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+      }
+      .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 80%;
+        box-shadow: ;
+      }*/
+
+
     </style>
 
     <!--
@@ -94,7 +118,8 @@
         <div class="tab-content">
           <div id="live" class="tab-pane fade in active">
             <h4 id="video-title">Live </h4>
-            <p><span id="play" class="glyphicon glyphicon-play"></span> <span id="pause" class="glyphicon glyphicon-pause"></span> <span id="status" class=""></span></p>
+            <p><span id="play" class="glyphicon glyphicon-play"></span> <span id="pause" class="glyphicon glyphicon-pause"></span> <span id="status" class=""></span><span id="duplicate" class="glyphicon glyphicon-duplicate pull-right"></span><span id="shareable_link" class="glyphicon glyphicon-share-alt pull-right" style="margin-right: 10px;"></span></p>
+
             <textarea id="note" placeholder="make a note..."></textarea>
             <button id="save" class="btn btn-success right">Save</button>
             <div id="timeline">
@@ -122,6 +147,8 @@
                 <li class="list-group-item">No videos</li>
               </ul>
             </div>
+            <input type = "text" id="shared_link" placeholder="Enter Shared Link" style="width:85%">
+            <button id="get_shared_video" class="btn btn-success right" style="margin-left: 10px">Go</button>
           </div>
 
           <div id="search" class="tab-pane fade">
