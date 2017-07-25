@@ -61,6 +61,9 @@ function showTimeline(){
 			var data_len = data.length;
 			var margin_to_set = (1/data_len) * 100;
 			margin_to_set -= margin_to_set * 0.30; 
+			if(data.length == 1){
+				margin_to_set = 49;
+			}
 			for(var i of data){
 				var ts = makeMinutesSeconds(i.timestamp);
 				$("#timeline").append("<div class='dot' id='dot"+(index)+"' data='"+ts+" : "+i.data+"' timestamp='"+i.timestamp+"' style='margin-left : "+margin_to_set+"%' title='"+ts+"'></div>");
@@ -85,7 +88,13 @@ $(document).ready(function(){
 	var style_css = '.dot{width:10px;height:10px;background-color:#fff;display:inline-block;margin-left:23%;border-radius:7px;border:1px solid #000;margin-top:-9px;vertical-align:top}';
 	$("head").append('<style>'+style_css+'</style>');
 	//<div > </div>
-	$("<div class='timeline' id='timeline' style='background-color: #fff; min-height: 100px; width : 854px' class='watch-main-col action-panel-content yt-uix-expander yt-card yt-card-has-padding yt-uix-expander-collapsed'></div>").insertBefore("#watch7-content");
+	var timeline_width = 640;
+	if(window.innerWidth >= 1720){
+		timeline_width = 1280;
+	} else if (window.innerWidth >= 1294){
+		timeline_width = 854;
+	}
+	$("<div class='timeline' id='timeline' style='background-color: #fff; min-height: 100px; width: "+timeline_width+"px' class='watch-main-col action-panel-content yt-uix-expander yt-card yt-card-has-padding yt-uix-expander-collapsed'></div>").insertBefore("#watch7-content");
 	YoutubeUrl = location.href;
 	showTimeline();
 
@@ -99,3 +108,7 @@ $(document).ready(function(){
 		}
 	}
 });
+
+/*
+#timeline {width: 640px;}@media screen and (min-height: 980px) and (min-width: 1720px)#timeline {width: 1280px;}@media screen and (min-height: 630px) and (min-width: 1294px)#timeline {width: 854px;}
+*/

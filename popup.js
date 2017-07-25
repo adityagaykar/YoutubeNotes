@@ -177,6 +177,7 @@ $(document).ready(function(){
 			data : data,
 			datatype : 'JSON',
 			success : function(result){
+				populateTimeline();
 				location.reload();
 			}
 		});
