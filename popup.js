@@ -164,7 +164,6 @@ $(document).ready(function(){
 
 	$("#get_shared_video").click(function(){
 		//write getVideo call here --Deeksha
-		alert("click");
 		window.open("https://www.youtube.com/watch?v=4lwoJG1BT3I");
 	});
 	$("#duplicate").click(function(){alert("The video note has been added to your Personal Notes");});
