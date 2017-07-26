@@ -81,6 +81,7 @@ function saveNote(note){
 			showStatus("status", "Done!", ["label", "label-success"], 3000);
 			populateTimeline();
 			location.reload();
+			
 				// $("#element").timeline("add",
 	   //                              [
 	   //                                { 
@@ -144,7 +145,6 @@ $(document).ready(function(){
 		} else {
 			showStatus("status", "Note cannot be empty", ["label", "label-warning"], 3000);
 		}
-		
 		// //alert(note);
 		 
 		// $.get("https://api.ipify.org?format=json", function(data){
@@ -161,6 +161,14 @@ $(document).ready(function(){
 	$("#play").click(function(){
 		playVideo();
 	});
+
+	$("#get_shared_video").click(function(){
+		//write getVideo call here --Deeksha
+		window.open("https://www.youtube.com/watch?v=4lwoJG1BT3I");
+	});
+	$("#duplicate").click(function(){alert("The video note has been added to your Personal Notes");});
+
+	$("#shareable_link").click(function(){alert("Share link : GDHJNCLDMV94NHFY");});
 
 	$("#remove_note_btn").click(function(){
 		var url = this.getAttribute("url");
