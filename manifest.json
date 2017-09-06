@@ -20,8 +20,7 @@
   "content_scripts": [
     {
       "matches" : ["http://www.youtube.com/watch*", "https://www.youtube.com/watch*"],
-      // "matches" : ["http://*/*", "https://*/*"],
-      "js": ["./src/jquery.min.js","./src/jquery.timelinr-0.9.6.js", "myscript.js"]
+      "js": ["./src/jquery.min.js", "myscript.js"]
     }
   ]
 
