@@ -45,8 +45,6 @@ script.src = "https://code.jquery.com/jquery-1.11.2.min.js";
 document.head.appendChild(script);
 
 
-
-
 function makeMinutesSeconds(TimeStamp)
 {
 	var minutes = Math.floor(TimeStamp / 60);
