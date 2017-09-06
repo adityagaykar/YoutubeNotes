@@ -73,13 +73,6 @@ function showTimeline(){
 			data.splice(0);
 			 for (var i = response.length -1 ; i >= 0; i--) {
 						console.log(response[i]);
-						// var timelineEntry = {
-						// 	timeInstance : "<a href='#' class='time_spot' time_x='"+response[i].TimeStamp+"'>"+makeMinutesSeconds(response[i].TimeStamp)+"</a>",
-      //                   	color: '#555',
-      //                   	css: 'success',
-      //                   	content: "<p class='time_text' ts='"+response[i].TimeStamp+"' url='"+response[i].Url+"' data='"+response[i].Note+"'>"+pruneContentForDisplay(response[i].Note)+"</p>"
-
-						// }
 						var timelineEntry = {
 							timestamp : response[i].TimeStamp,
 							data : response[i].Note

@@ -32,7 +32,7 @@ function updateVideoTime(time){
 var vTitle = "";
 function getVideoTitle(){
 	chrome.tabs.getSelected(null, function(tab){
-	    chrome.tabs.executeScript(tab.id, {code: "document.getElementById('eow-title').title"}, function(response) {
+	    chrome.tabs.executeScript(tab.id, {code: "$('#container h1').html()"}, function(response) {
 	    	// alert(response.toString().length);
 	    	var titleLen = response.toString().length;
 	    	response = response.toString();
@@ -321,11 +321,11 @@ function getVideos()
 				{
 					"Name" : "adityagaykar"
 					},
-				function(response){
+				function(response){					
 					var data = [];
 					$("#videos").empty();
 					 for (var i = response.length -1 ; i >= 0; i--) {
-							$("#videos").append('<li class="list-group-item"><a href="'+response[i].Url+'" target="_blank">'+response[i].Title.substring(0,20)+'</a><span class="glyphicon glyphicon-share-alt pull-right" style="margin-left: 10px;"></span><span style="margin-left: 10px;" class="glyphicon glyphicon-trash pull-right remove_video_btn" data="'+response[i].Url+'"> </span></li>');
+							$("#videos").append('<li class="list-group-item"><a href="'+response[i].Url+'" target="_blank">'+ (response[i].Title ? response[i].Title.substring(0,20) : response[i].Title)+'</a><span class="glyphicon glyphicon-share-alt pull-right" style="margin-left: 10px;"></span><span style="margin-left: 10px;" class="glyphicon glyphicon-trash pull-right remove_video_btn" data="'+response[i].Url+'"> </span></li>');
 					 }
 					 $(".remove_video_btn").click(function(){
 						var url = this.getAttribute("data");
