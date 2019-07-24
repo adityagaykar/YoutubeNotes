@@ -32,12 +32,12 @@ function updateVideoTime(time){
 var vTitle = "";
 function getVideoTitle(){
 	chrome.tabs.getSelected(null, function(tab){
-	    chrome.tabs.executeScript(tab.id, {code: "$('#container h1').html()"}, function(response) {
+	    chrome.tabs.executeScript(tab.id, {code: "$('#container h1 yt-formatted-string').html()"}, function(response) {
 	    	// alert(response.toString().length);
 	    	var titleLen = response.toString().length;
 	    	response = response.toString();
 	    	vTitle = "";
-	    	if(titleLen > 05){
+	    	if(titleLen > 50){
 	    		vTitle = response.substring(0,50) + "...";
 	    	}
 	       $("#video-title").text(vTitle);
