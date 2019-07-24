@@ -37,7 +37,7 @@ function getVideoTitle(){
 	    	var titleLen = response.toString().length;
 	    	response = response.toString();
 	    	vTitle = "";
-	    	if(titleLen > 50){
+	    	if(titleLen > 05){
 	    		vTitle = response.substring(0,50) + "...";
 	    	}
 	       $("#video-title").text(vTitle);
